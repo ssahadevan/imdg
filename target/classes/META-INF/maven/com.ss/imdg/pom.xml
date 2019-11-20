@@ -3,12 +3,16 @@
   <groupId>com.ss</groupId>
   <artifactId>imdg</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
   <name>GettingStarted</name>
      <dependencies>
       <dependency>
           <groupId>com.hazelcast</groupId>
           <artifactId>hazelcast</artifactId>
-          <version>4.0-BETA-1</version>
+           <version>3.12.3</version>
       </dependency>
   </dependencies>
 </project>

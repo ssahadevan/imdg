@@ -1,0 +1,10 @@
+<hazelcast>
+  <cluster>
+        <name>dev</name>
+    </cluster>
+    
+  <management-center enabled="true">
+      http://localhost:8080/hazelcast-mancenter
+  </management-center>
+  
+ </hazelcast>
