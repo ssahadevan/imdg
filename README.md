@@ -10,4 +10,4 @@
  mvn clean
  mvn install
  
- Run as a java application
+ Run as a java application 

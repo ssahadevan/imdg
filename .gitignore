@@ -2,3 +2,7 @@
 *.class
 *.class
 *.jar
+target/classes/hazelcast.old
+src/main/resources/hazelcast.old
+*.class
+*.jar
