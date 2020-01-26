@@ -20,6 +20,7 @@ public class GettingStarted {
     public static void main(String[] args) {
         Config cfg = new Config();
         cfg.getManagementCenterConfig().setEnabled(true);
+        cfg.setProperty("hazelcast.jmx", "true");
         cfg.getManagementCenterConfig().setUrl("http://localhost:8080/hazelcast-mancenter");
         
         HazelcastInstance instance = Hazelcast.newHazelcastInstance(cfg);
