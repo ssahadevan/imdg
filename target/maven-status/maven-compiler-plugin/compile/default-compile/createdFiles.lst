@@ -4,7 +4,13 @@ imdg/EntryProcessorSample$IncEntryProcessor.class
 imdg/GettingStarted.class
 imdg/GettingStarted$myEntryListener.class
 imdg/TopicSample.class
+client/GettingStartedClient.class
 imdg/QuerySample.class
+imdg/ExecutorServiceSample.class
 imdg/Employee.class
 imdg/QuerySample$CardRange.class
+imdg/EntryProcessorMember$EmployeeRaiseEntryProcessor.class
 imdg/MapSample.class
+imdg/EntryProcessorMember.class
+imdg/MainMillionEntries.class
+imdg/ExecutorServiceSample$MessagePrinter.class

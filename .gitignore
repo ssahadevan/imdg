@@ -8,3 +8,4 @@ src/main/resources/hazelcast.old
 *.jar
 *.jar
 *.jar
+*.log

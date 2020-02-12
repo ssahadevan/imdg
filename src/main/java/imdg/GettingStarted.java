@@ -2,6 +2,7 @@ package imdg;
 
 import com.hazelcast.core.*;
 import com.hazelcast.config.*;
+import com.hazelcast.config.cp.CPSubsystemConfig;
 import com.hazelcast.map.listener.*;
 import com.hazelcast.query.EntryObject;
 import com.hazelcast.query.Predicate;
@@ -22,6 +23,16 @@ public class GettingStarted {
         cfg.getManagementCenterConfig().setEnabled(true);
         cfg.setProperty("hazelcast.jmx", "true");
         cfg.getManagementCenterConfig().setUrl("http://localhost:8080/hazelcast-mancenter");
+        CPSubsystemConfig cpSubsystemConfig = cfg.getCPSubsystemConfig();
+        cpSubsystemConfig
+        .setCPMemberCount(3)
+        .setGroupSize(3)
+        .setSessionTimeToLiveSeconds(300)
+        .setSessionHeartbeatIntervalSeconds(5)
+        .setMissingCPMemberAutoRemovalSeconds(14400)
+        .setFailOnIndeterminateOperationState(false)
+        
+        ;
         
         HazelcastInstance instance = Hazelcast.newHazelcastInstance(cfg);
         IMap<Integer, String> mapCustomers = instance.getMap("customers");
@@ -64,7 +75,7 @@ public class GettingStarted {
         
         EntryObject e = new PredicateBuilder().getEntryObject();
         int ageFilterIncrement=5;
-        Predicate predicate = e.is( "active" ).and( e.get( "age" ).lessThan( 30 + ageFilterIncrement  ) );
+        Predicate<?, ?> predicate = e.is( "active" ).and( e.get( "age" ).lessThan( 30 + ageFilterIncrement  ) );
 
         Collection<Employee> employees = mapEmployee.values( predicate );
         System.out.println("Results=" + employees );

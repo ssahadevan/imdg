@@ -33,4 +33,8 @@ public class Employee implements Serializable {
     public boolean isActive() {
         return active;
     }
+    
+    public void incSalary(int delta){
+        salary+=delta;
+    }
 }
