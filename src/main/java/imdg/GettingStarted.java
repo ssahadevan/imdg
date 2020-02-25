@@ -7,6 +7,8 @@ import com.hazelcast.map.listener.*;
 import com.hazelcast.query.EntryObject;
 import com.hazelcast.query.Predicate;
 import com.hazelcast.query.PredicateBuilder;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 import java.util.Collection;
 import java.util.Map;
@@ -18,11 +20,18 @@ import imdg.Employee;
 import com.google.gson.Gson; 
  
 public class GettingStarted {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+    	final String MAP_NAME = "myMap";
+        final long KEY_COUNT = 10_000;
+        final long SLEEPING_TIME_MS = 1_000;
+    	
         Config cfg = new Config();
+        
         cfg.getManagementCenterConfig().setEnabled(true);
         cfg.setProperty("hazelcast.jmx", "true");
         cfg.getManagementCenterConfig().setUrl("http://localhost:8080/hazelcast-mancenter");
+        
+        /*
         CPSubsystemConfig cpSubsystemConfig = cfg.getCPSubsystemConfig();
         cpSubsystemConfig
         .setCPMemberCount(3)
@@ -30,9 +39,9 @@ public class GettingStarted {
         .setSessionTimeToLiveSeconds(300)
         .setSessionHeartbeatIntervalSeconds(5)
         .setMissingCPMemberAutoRemovalSeconds(14400)
-        .setFailOnIndeterminateOperationState(false)
-        
+        .setFailOnIndeterminateOperationState(false)  
         ;
+        */
         
         HazelcastInstance instance = Hazelcast.newHazelcastInstance(cfg);
         IMap<Integer, String> mapCustomers = instance.getMap("customers");
@@ -88,7 +97,14 @@ public class GettingStarted {
           System.out.println(json);
         }
 
-        
+       // HazelcastInstance instance = Hazelcast.newHazelcastInstance();
+        IMap<Long, String> map = instance.getMap(MAP_NAME);
+        for (;;) {
+            long key = ThreadLocalRandom.current().nextLong(KEY_COUNT);
+            map.put(key, UUID.randomUUID().toString());
+
+            Thread.sleep(SLEEPING_TIME_MS);
+        }
                 
         
     } // End main
