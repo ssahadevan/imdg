@@ -25,6 +25,8 @@ public class MapSample {
         map.replace("key", "value", "newvalue");
         
         System.out.println("Key's value is : "+ map.get("key"));
+        map.clear();
+        System.out.println("Key's value is : "+ map.get("key"));
         
         // Shutdown the Hazelcast Cluster Member
         hz.shutdown();

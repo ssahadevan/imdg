@@ -43,10 +43,20 @@ public class GettingStarted {
         ;
         */
         
+        
+        
         HazelcastInstance instance = Hazelcast.newHazelcastInstance(cfg);
         IMap<Integer, String> mapCustomers = instance.getMap("customers");
+        
         ((IMap<Integer, String>) mapCustomers).addEntryListener( new myEntryListener() , true);
+        
+        mapCustomers.tryLock(1);
+        try {
         mapCustomers.put(1, "Joe");
+        }
+        finally {
+        	mapCustomers.forceUnlock(1);
+        }
         mapCustomers.put(2, "Ali");
         mapCustomers.put(3, "Avi");
  
@@ -137,5 +147,7 @@ public class GettingStarted {
 			System.out.println("Entry updated :" + event);
 		}
     }
+    
+    
 }
 

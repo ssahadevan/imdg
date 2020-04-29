@@ -9,3 +9,6 @@ src/main/resources/hazelcast.old
 *.jar
 *.jar
 *.log
+target/classes/imdg/GettingStarted.class
+*.class
+*.jar
