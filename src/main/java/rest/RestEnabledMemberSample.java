@@ -14,8 +14,17 @@ public class RestEnabledMemberSample {
         RestApiConfig restApiConfig = new RestApiConfig()
                 .setEnabled(true)
                 .disableAllGroups()
-                .enableGroups(RestEndpointGroup.DATA);
+                .enableGroups(RestEndpointGroup.DATA)
+                .enableGroups(RestEndpointGroup.CLUSTER_READ)
+                .enableGroups(RestEndpointGroup.CLUSTER_WRITE)
+                .enableGroups(RestEndpointGroup.HEALTH_CHECK)
+                ;
         config.getNetworkConfig().setRestApiConfig(restApiConfig);
+        
+        config.getManagementCenterConfig().setEnabled(true);
+        config.setProperty("hazelcast.jmx", "true");
+        config.getManagementCenterConfig().setUrl("http://localhost:8080/hazelcast-mancenter");
+        
         HazelcastInstance hz = Hazelcast.newHazelcastInstance(config);
         Person person = new Person("Joe");
 
