@@ -12,3 +12,6 @@ src/main/resources/hazelcast.old
 target/classes/imdg/GettingStarted.class
 *.class
 *.jar
+target/classes/rest/resttest.sh
+target/maven-archiver/pom.properties
+target/classes/META-INF/maven/com.ss/imdg/pom.properties
