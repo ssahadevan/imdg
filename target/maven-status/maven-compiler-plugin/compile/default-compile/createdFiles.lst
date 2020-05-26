@@ -1,5 +1,6 @@
 imdg/GettingStarted$1.class
 imdg/EntryProcessorSample$IncEntryProcessor.class
+imdg/QueryHazelcastJsonValue.class
 imdg/ExecutorServiceSample.class
 rest/CommonUtils.class
 imdg/Employee.class
