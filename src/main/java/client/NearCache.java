@@ -111,7 +111,7 @@ public class NearCache {
         }
         
        // member.shutdown();
-       while (true ) {
+      //  while (true ) {
         
       //verify the availability of Near Cache data while client is disconnected
         System.out.println("In While loop");
@@ -155,7 +155,7 @@ public class NearCache {
 
         }
         
-       } // End while
+       // } // End while
                 
         // client.shutdown();
         
